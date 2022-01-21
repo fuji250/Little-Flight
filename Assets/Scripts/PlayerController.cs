@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public float jump = 9.0f;
     public LayerMask groundLayer;
-
     public static string gameState = "playing";
 
     // Start is called before the first frame update
@@ -31,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
         axisH = Input.GetAxisRaw("Horizontal");
         axisV = Input.GetAxisRaw("Vertical");
+
+        /*
         if(axisH > 0.0f)
         {
             transform.localScale = new Vector2(1,1);
@@ -38,15 +39,20 @@ public class PlayerController : MonoBehaviour
         else if(axisH < 0.0f)
         {
             transform.localScale = new Vector2(-1,1);
-        }
+        }*/
         
         if(axisV > 0.0f)
         {
-            transform.localScale = new Vector2(1,1);
+            transform.rotation = Quaternion.Euler( 0, 0, 10);
         }
         else if(axisV < 0.0f)
         {
-            transform.localScale = new Vector2(1,-1);
+            transform.rotation = Quaternion.Euler(0, 0, -10);
+
+        }
+        else if(axisV == 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -57,12 +63,20 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        //GamOverââèo
+        if(gameState == "gameover")
+        {
+            Vector2 myGravity = new Vector2(0, -10);
+
+            rbody.AddForce(myGravity);
+        }
+
         if(gameState != "playing")
         {
+            Debug.Log(gameState);
             return;
         }
         rbody.velocity = new Vector2(speed * axisH,speed * axisV);
-
     }
     public void Jump()
     {
@@ -86,6 +100,9 @@ public class PlayerController : MonoBehaviour
     {
         gameState = "gameclear";
         GameStop();
+        //GameClearââèo
+        GetComponent<PolygonCollider2D>().enabled = false;
+        rbody.AddForce(new Vector2(4,0),ForceMode2D.Impulse);
     }
 
     public void GameOver()
@@ -93,9 +110,10 @@ public class PlayerController : MonoBehaviour
         gameState = "gameover";
         GameStop();
         //GameOverââèo
-        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<PolygonCollider2D>().enabled = false;
         rbody.AddForce(new Vector2(0,5),ForceMode2D.Impulse);
     }
+
     void GameStop()
     {
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();

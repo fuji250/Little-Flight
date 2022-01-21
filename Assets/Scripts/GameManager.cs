@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class GameManager : MonoBehaviour
 
     Image titleImage; //画像を表示するImageコンポーネント
 
-
+    float x = 0;
+    float y = 0;
+    float z = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 v3 = new Vector3(x,y,z);
+        mainImage.GetComponent<Transform>().DOMove(v3, 1f).SetEase(Ease.InOutElastic);
         Invoke("InactiveImage",1.0f);
         panel.SetActive(false);
     }
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
             Button bt = restartButton.GetComponent<Button>();
             bt.interactable = false;
             mainImage.GetComponent<Image>().sprite = gameClearSpr;
-            PlayerController.gameState = "gameend";
+            //PlayerController.gameState = "gameend";
         }
         else if(PlayerController.gameState == "gameover")
         {
@@ -44,7 +49,7 @@ public class GameManager : MonoBehaviour
             Button bt = nextButton.GetComponent<Button>();
             bt.interactable = false;
             mainImage.GetComponent<Image>().sprite = gameOverSpr;
-            PlayerController.gameState = "gameend";
+            //PlayerController.gameState = "gameend";
         }
         else if(PlayerController.gameState == "playing")
         {

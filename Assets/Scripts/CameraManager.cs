@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public PlayerController playerController;
+
     public float leftLimit = 0.0f;
     public float rightLimit = 0.0f;
     public float topLimit = 0.0f;
@@ -36,6 +38,11 @@ public class CameraManager : MonoBehaviour
             if (isForceScrollX)
             {
                 x = transform.position.x + (ForceScrollSpeedX * Time.deltaTime); 
+
+                if(x >= rightLimit)
+                {
+                    playerController.Goal();
+                }
             }
             if(x < leftLimit)
             {
