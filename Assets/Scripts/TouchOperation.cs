@@ -5,17 +5,12 @@ using UnityEngine.EventSystems;
 
 public class TouchOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    //スマホでも操作出来るようにするスクリプト
+
     private bool _isPushed = false; // マウスが押されているか押されていないか
     private Vector3 _nowMousePosi; // 現在のマウスのワールド座標
 
     public GameObject player;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +26,8 @@ public class TouchOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 // 一つ前のマウス座標との差分を計算して変化量を取得
                 diffposi = nowmouseposi - _nowMousePosi;
 
+                //移動の方向に合わせてプレイヤーの角度を変更（今はうまくいってない）
+                //直近100フレームの平均値とかをとっていけば上手く行くか、、？
                 if(diffposi.y > 0.0f)
                 {
                     player.transform.rotation = Quaternion.Euler( 0, 0, 10);
@@ -43,7 +40,7 @@ public class TouchOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 {
                     player.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
-                //　XY成分のみ変化させる
+
                 diffposi.z = 0;
                 // 開始時のオブジェクトの座標にマウスの変化量を足して新しい座標を設定
                 GetComponent<Transform>().position += diffposi;

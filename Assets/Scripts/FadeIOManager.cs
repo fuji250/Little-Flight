@@ -5,8 +5,10 @@ using DG.Tweening;
 
 public class FadeIOManager : MonoBehaviour
 {
+    //シーン切り替えの際にフェードインアウトさせるスクリプト
+
     public float fadeTime = 1f;
-    // シングルトン化
+    // シングルトン化------------------------
     public static FadeIOManager instance;
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class FadeIOManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    //--------------------------------------
     public CanvasGroup canvasGroup;
 
     // Start is called before the first frame update

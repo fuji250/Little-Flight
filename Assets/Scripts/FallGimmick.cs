@@ -5,11 +5,13 @@ using DG.Tweening;
 
 public class FallGimmick : MonoBehaviour
 {
+    //プレイヤーが近づくと落ちていく障害物のスクリプト（岩）
+
     public float length = 0.0f;
     public bool isDelete = false;
 
     bool isFell = false;
-    float fadeTime = 0.5f;
+    float fadeTime = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,16 +37,14 @@ public class FallGimmick : MonoBehaviour
                     //transform.DOShakePosition(1.5f, 0.3f, 5, 0, false, true);
                     //落ちる
                     rbody.bodyType = RigidbodyType2D.Dynamic;
+                    isFell = true;
                 }
             }
         }
         if (isFell)
         {
-            //フェードアウトして消滅
+            //消滅
             fadeTime -= Time.deltaTime;
-            Color col = GetComponent<SpriteRenderer>().color;
-            col.a = fadeTime;
-            GetComponent<SpriteRenderer>().color = col;
             if(fadeTime <= 0.0f)
             {
                 Destroy(gameObject);

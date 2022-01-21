@@ -4,40 +4,34 @@ using UnityEngine;
 
 public class ObjectMove : MonoBehaviour
 {
+    //障害物を右から左に動かすスクリプト
+
     public PlayerController playerController;
-
-    public float leftLimit = 0.0f;
-    public float rightLimit = 0.0f;
-
+    public float length = 78f;//ステージの長さ
     public float ForceScrollSpeedX = 1.0f;
+    
+    public GameObject subscreen;//背景の山など
 
-    public GameObject subscreen;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        length *= -1; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = 0;
-        float y = 0;
-        float z = 0;
-
+        float x = 0,y = 0,z = 0;
+       
+        //移動
         x = transform.position.x - (ForceScrollSpeedX * Time.deltaTime); 
 
-        if(x <= leftLimit)
+        if(x <= length)
         {
+            //leftLimitまで移動し終わるとゴール
             playerController.Goal();
-        }
-        if(x < leftLimit)
-        {
-            x = leftLimit;
-        }
-        else if(x > rightLimit)
-        {
-            x = rightLimit;
+            x = length;
         }
         Vector3 v3 = new Vector3(x,y,z);
         transform.position = v3;
@@ -46,7 +40,7 @@ public class ObjectMove : MonoBehaviour
         {
             y = subscreen.transform.position.y;
             z = subscreen.transform.position.z;
-            Vector3 v = new Vector3(x / 2.0f +19.8f,y,z);
+            Vector3 v = new Vector3(x / 2.0f ,y,z);
             subscreen.transform.position = v;
         }
     }

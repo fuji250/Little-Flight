@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject mainImage;
+    public GameObject mainImage;//ステージ名とか入れる画像
     public Sprite gameOverSpr;
     public Sprite gameClearSpr;
     public GameObject panel;
@@ -15,9 +15,7 @@ public class GameManager : MonoBehaviour
 
     Image titleImage; //画像を表示するImageコンポーネント
 
-    float x = 0;
-    float y = 0;
-    float z = 0;
+    float x = 0,y = 0,z = 0;
 
     // Start is called before the first frame update
     void Start()
