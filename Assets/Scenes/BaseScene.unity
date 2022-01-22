@@ -802,6 +802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180943595}
+  - component: {fileID: 1180943596}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -823,6 +824,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180943596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180943594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791bba273d658bd4bb88cbc003f2d0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1182172564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1643,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 105
       objectReference: {fileID: 0}
+    - target: {fileID: 8487521249817406708, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521249817406708, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1180943596}
+    - target: {fileID: 8487521249817406708, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadTo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521249817406708, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneTransitionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521249817406708, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Stage1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521250073944968, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521250073944968, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1180943596}
+    - target: {fileID: 8487521250073944968, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadTo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521250073944968, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneTransitionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487521250073944968, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: BaseScene
+      objectReference: {fileID: 0}
     - target: {fileID: 8487521251039300233, guid: d94c14c48b46a754f896918a625adf26, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1722,7 +1775,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5579184758514398643, guid: d94c14c48b46a754f896918a625adf26, type: 3}
+    - {fileID: 8980001316435369883, guid: d94c14c48b46a754f896918a625adf26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d94c14c48b46a754f896918a625adf26, type: 3}
 --- !u!1001 &9161092168989688184
 PrefabInstance:
